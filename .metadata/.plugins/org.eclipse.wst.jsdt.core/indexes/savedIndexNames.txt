@@ -1,0 +1,9 @@
+INDEX VERSION 1.4+/Users/watcharaphan/Dev/eclipse-workspace/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+929510394.index
+2670079805.index
+1913727473.index
+1179366560.index
+2860000117.index
+2860000117.index
+265440921.index
+393116777.index

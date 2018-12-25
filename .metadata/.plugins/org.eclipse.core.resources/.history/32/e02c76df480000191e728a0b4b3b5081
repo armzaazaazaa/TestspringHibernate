@@ -1,0 +1,29 @@
+
+
+
+function myFunction(id,email,pass) {
+
+	// alter('55555');
+	console.log(id);
+	console.log(email);
+	console.log(pass);
+
+	  $('#email').val(email);
+      $('#password').val(pass);
+      $('#idfrom').val(id);
+	 $('#exampleModaledit').modal('show')
+
+}
+
+function seave() {
+
+	// var x = document.getElementById("email")
+	//	
+	var objForm = {};
+	objForm.email = document.getElementById("email").value();
+	// objForm.password = $('#password').val();
+
+	console.log(objForm);
+
+}
+

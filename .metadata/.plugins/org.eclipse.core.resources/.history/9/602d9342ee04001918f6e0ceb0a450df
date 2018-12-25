@@ -1,0 +1,71 @@
+package Model;
+
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+public class Datausers {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name ="id")
+		private int id;
+	@Column(name ="id_user")
+		private int id_user;
+	@Column(name ="img")
+		private String img;
+	@Column(name ="date")
+		private Date date;
+	@Column(name ="address")
+	private String address;
+	public Datausers(int id, int id_user, String img, Date date, String address) {
+		super();
+		this.id = id;
+		this.id_user = id_user;
+		this.img = img;
+		this.date = date;
+		this.address = address;
+	}
+	public Datausers() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public int getId_user() {
+		return id_user;
+	}
+	public void setId_user(int id_user) {
+		this.id_user = id_user;
+	}
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
+	}
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	
+	
+	
+	
+
+}

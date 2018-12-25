@@ -1,0 +1,36 @@
+package Project.View;
+
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+import Connection.HibernateConnection;
+import Model.Users;
+
+public class ViewManager {
+	
+	public Users  getview (Users user) {
+		
+		  Users usr = null;
+
+
+	  try {
+	   SessionFactory sessionFactory = HibernateConnection.doHibernateConnection();
+	   Session session = sessionFactory.openSession();
+	   session.beginTransaction();
+	   session.clear();
+	   session.flush();
+	   session.close();
+	   sessionFactory.close();
+	   
+	 
+	
+	  } catch (Exception e) {
+	   e.printStackTrace();
+
+	  }
+	  return  usr ;
+	 }
+
+}

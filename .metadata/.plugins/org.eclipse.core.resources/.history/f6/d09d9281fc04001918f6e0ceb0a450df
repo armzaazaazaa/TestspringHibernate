@@ -1,0 +1,59 @@
+package Project.View;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.stereotype.*;
+import org.springframework.web.bind.annotation.*;
+
+import Model.Users;
+import Project.View.ViewManager;
+
+@Controller
+@RequestMapping
+
+public class ViewController {
+	
+	@RequestMapping(value = "/viewdatauser", method = RequestMethod.POST)
+	public String viewdatauser(HttpServletRequest request, HttpSession session) throws Exception {
+		
+		request.setCharacterEncoding("UTF-8");
+
+		  
+			int id = Integer.parseInt(request.getParameter("numid"));
+		  
+
+		  
+		  
+		  Users users = new Users();
+		  users.setId(id);
+	
+		
+		  
+		
+	
+		  
+		  
+		  ViewManager ViewManager = new ViewManager();
+		  ViewManager.getview(users);
+		  
+		  Users userview = new Users();
+		  userview = ViewManager.getview(users);
+		  
+		  
+		  
+		  session.setAttribute("ViewManager", userview); 
+		  
+		  
+		  
+		  
+	
+		
+		 
+		 return "view";
+		
+		
+
+	}
+
+}

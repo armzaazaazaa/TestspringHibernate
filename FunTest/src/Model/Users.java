@@ -1,0 +1,95 @@
+package Model;
+
+
+import java.util.Date;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "user") 
+public class Users {
+	
+	
+@Id
+@GeneratedValue(strategy = GenerationType.AUTO)
+@Column(name ="id")
+	private int id;
+@Column(name ="email")
+	private String email;
+@Column(name ="password")
+	private String passwort;
+@Column(name ="date")
+	private Date date;
+
+	
+	
+	public Users() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	
+	public Users(int id, String email, String passwort , Date date) {
+		super();
+		this.id = id;
+		this.email = email;
+		this.passwort = passwort;
+		this.date = date;
+		
+		
+	}
+
+
+
+	public int getId() {
+		return id;
+	}
+
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+
+	public String getPasswort() {
+		return passwort;
+	}
+
+
+
+	public void setPasswort(String passwort) {
+		this.passwort = passwort;
+	}
+
+
+
+	public Date getDate() {
+		return date;
+	}
+
+
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	
+	
+	
+	
+
+}

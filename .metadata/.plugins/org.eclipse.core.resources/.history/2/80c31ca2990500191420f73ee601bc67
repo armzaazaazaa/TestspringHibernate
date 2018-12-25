@@ -1,0 +1,59 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8"%> <%@ page import="java.util.*"%> <%@ page
+import="Model.*"%> <%@ page import="java.text.*"%> <% Users userlogins = (Users)
+session.getAttribute("userlogins"); Users userview =
+(Users)session.getAttribute("userview"); %>
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- global -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="css/global/bootstrap.min.css"
+    />
+    <script
+      type="text/javascript"
+      src="js/global/jquery-3.3.1.slim.min.js"
+    ></script>
+
+    <script
+      type="text/javascript"
+      src="js/global/jquery-3.3.1.slim.min.js"
+    ></script>
+
+    <script type="text/javascript" src="js/global/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/global/popper.min.js"></script>
+    <!-- global -->
+
+    <link rel="stylesheet" type="text/css" href="css/from.css" />
+    <script type="text/javascript" src="js/fromjs.js"></script>
+    <script type="text/javascript" src="js/view.js"></script>
+    
+
+
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+  </head>
+  <body align="center">
+    <div class="container">
+      <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="#"><%=userlogins.getEmail()%></a>
+
+        <form id="logout" action="logout" method="post">
+          <button type="submit" class="btn btn-danger">logout</button>
+        </form>
+      </nav>
+
+      <br />
+      <br />
+      <br />
+
+
+
+      <%=userview.getEmail() %> <br />
+      <%=userview.getPasswort() %>
+    </div>
+  </body>
+</html>

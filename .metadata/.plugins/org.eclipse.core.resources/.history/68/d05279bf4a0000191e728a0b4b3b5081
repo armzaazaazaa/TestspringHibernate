@@ -1,0 +1,34 @@
+package Project.Adduser;
+
+import org.h2.engine.User;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+import Connection.HibernateConnection;
+import Model.Users;
+
+public class InsertManager {
+	
+	
+	public String doHibernateAddProduct(Users users) {
+		  try {
+		   SessionFactory sessionFactory = HibernateConnection.doHibernateConnection();
+		   Session session = sessionFactory.openSession();
+		   session.beginTransaction();
+		   session.saveOrUpdate(users);
+		   session.getTransaction().commit();
+		   session.clear();
+		   session.flush();
+		   session.close();
+		   sessionFactory.close();
+		   return "Add New Product Successfully...";
+		  } catch (Exception e) {
+		   e.printStackTrace();
+		   return "Product is already there with this";
+		  }
+		 }
+	
+	
+	
+
+}

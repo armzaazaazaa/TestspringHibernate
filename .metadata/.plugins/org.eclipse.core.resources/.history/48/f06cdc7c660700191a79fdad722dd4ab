@@ -1,0 +1,226 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8"%>
+<%@ page import="java.util.*"%>
+<%@ page
+import="Model.*"%>
+<%@ page import="java.text.*"%>
+<% Users userlogins = (Users)
+session.getAttribute("userlogins"); Users userview =
+(Users)session.getAttribute("userview"); %>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- global -->
+	<link rel="stylesheet" type="text/css" href="css/global/bootstrap.min.css" />
+	<script type="text/javascript" src="js/global/jquery-3.3.1.slim.min.js"></script>
+
+	<script type="text/javascript" src="js/global/jquery-3.3.1.slim.min.js"></script>
+
+	<script type="text/javascript" src="js/global/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/global/popper.min.js"></script>
+	<!-- global -->
+
+	<link rel="stylesheet" type="text/css" href="css/from.css" />
+	<script type="text/javascript" src="js/fromjs.js"></script>
+	<script type="text/javascript" src="js/view.js"></script>
+
+
+
+	<meta charset="UTF-8" />
+	<title>Insert title here</title>
+</head>
+
+<body align="center">
+	<div class="container">
+		<nav class="navbar navbar-light bg-light">
+			<a class="navbar-brand" href="#">
+				<%=userlogins.getEmail()%></a>
+
+			<form id="logout" action="logout" method="post">
+				<button type="submit" class="btn btn-danger">logout</button>
+			</form>
+		</nav>
+
+		<br />
+		<br />
+		<br />
+
+
+
+		<%=userview.getEmail() %> <br />
+		<%=userview.getPasswort() %><br />
+		<%=userview.getId() %>
+
+		<br><br><br>
+
+		<hr>
+
+		<form id="form1" action="uploaddatauser" method="post" enctype='multipart/form-data' accept-charset="UTF-8">
+
+			<div class="form-group">
+				<label for="exampleInputPassword1">assdress</label>
+				<input type="text" class="form-control" id="assdress" name="address">
+				<input type="hidden" id="iduser" name="iduser" value="<%=userview.getId()%>">
+			</div>
+
+			<div class="form-group">
+				<label for="exampleInputEmail1">image</label>
+
+
+				<input type="file" id="imgInp" name="image" class="file_input" multiple />
+				<div id="result" class="uploadPreview">
+				</div>
+
+
+				<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+
+		<hr>
+		<div id='TextBoxesGroups'>
+			<div id="wrapper1">
+				<label>Image 1 : </label><input id="imgfile1" type="file" name="imgfile1" accept="image/*" onchange="preview_image(event) "
+				 multiple>
+				<img class="output_imagepwe" id="output_image1">
+			</div>
+		</div>
+
+
+
+		<input type='button' value='Add Image' id='addButtons'>
+		<input type='button' value='Remove Image' id='removeButtons'>
+
+
+	</div>
+</body>
+
+</html>
+<style>
+	.output_imagepwe
+  {
+   max-width:100px;
+  }
+ </style>
+
+
+<script type="text/javascript">
+
+
+
+
+	function preview_image(event) {
+		console.log(event);
+		var reader = new FileReader();
+		reader.onload = function () {
+			var output = document.getElementById('output_image1');
+			output.src = reader.result;
+		}
+		reader.readAsDataURL(event.target.files[0]);
+	}
+
+
+
+
+	function testpreviewimg(event, conter) {
+		console.log(conter);
+		var reader = new FileReader();
+		reader.onload = function () {
+			var output = document.getElementById('output_image' + conter);
+			output.src = reader.result;
+		}
+		reader.readAsDataURL(event.target.files[0]);
+	}
+
+
+
+
+
+
+	var counters = 2;
+
+	$("#addButtons").click(function () {
+
+
+
+		var newTextBoxDivs = $(document.createElement('div'))
+			.attr("id", 'wrapper' + counters);
+
+		newTextBoxDivs.html(
+			'<label>Image' + counters + ' : </label>'
+			+ '<input type="file" name="imgfile' + counters + '" id="imgfile' + counters + '"accept= image/* onchange="testpreviewimg(event,' + counters + ')"multiple>'
+			+ '<img id="output_image' + counters + '" class="output_imagepwe">' + '');
+
+		newTextBoxDivs.appendTo("#TextBoxesGroups");
+
+
+		counters++;
+	});
+
+	$("#removeButtons").click(function () {
+		if (counters == 1) {
+			alert("No more textbox to remove");
+			return false;
+		}
+
+		counters--;
+
+		$("#wrapper" + counters).remove();
+
+	});
+
+
+
+
+
+
+	window.onload = function () {
+		if (window.File && window.FileList && window.FileReader) {
+			var filesInput = document.getElementById("imgInp");
+			filesInput.addEventListener("change", function (event) {
+				var files = event.target.files;
+				var output = document.getElementById("result");
+				for (var i = 0; i < files.length; i++) {
+					var file = files[i];
+					if (!file.type.match('image'))
+						continue;
+					var picReader = new FileReader();
+					picReader.addEventListener("load", function (event) {
+						var picFile = event.target;
+						var div = document.createElement("div");
+						div.innerHTML = "<img class='thumbnail' src='" + picFile.result + "'" +
+							"title='" + picFile.name + "'/>";
+						output.insertBefore(div, null);
+					});
+					picReader.readAsDataURL(file);
+				}
+
+			});
+		}
+	}
+
+
+
+	/* 	function readURL(input) {
+
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+
+				reader.onload = function (e) {
+					$('#blah').attr('src', e.target.result);
+				}
+
+				reader.readAsDataURL(input.files[0]);
+			}
+		}
+
+		$("#imgInp").change(function () {
+			readURL(this);
+		}); */
+
+
+</script>
+<!--
+
+//-->
+</script>

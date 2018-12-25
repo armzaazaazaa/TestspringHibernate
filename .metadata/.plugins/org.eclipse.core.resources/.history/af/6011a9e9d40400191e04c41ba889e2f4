@@ -1,0 +1,3 @@
+function logincehcktype() {
+	alter('11111');
+}

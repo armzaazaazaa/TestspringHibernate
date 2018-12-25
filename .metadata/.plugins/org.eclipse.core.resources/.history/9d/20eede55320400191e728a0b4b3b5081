@@ -1,0 +1,63 @@
+package Project.login;
+
+
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import Model.Users;
+import Project.Adduser.InsertManager;
+import Project.Showuser.ShowuserManager;
+
+@Controller
+public class loginControler {
+
+	
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String doLogoutPages(HttpServletRequest request, HttpSession session) throws Exception {
+		
+		request.setCharacterEncoding("UTF-8");
+
+		  String username = request.getParameter("emaillogin");
+		  String password = request.getParameter("passwordlogin");
+		  
+
+		  
+		  
+		  Users users = new Users();
+		  users.setEmail(username);
+		  users.setPasswort(password);
+		  
+		
+	
+		  
+		  
+		  loginManager insmanager = new loginManager();
+		  loginManager.doHibernateAddProduct(users);
+		  
+		  
+		  
+		  System.out.print(username + password );
+		  
+
+	 		  
+		  ShowuserManager show = new ShowuserManager();
+		  
+		 List userlist = show.getshopfromapi();
+		  
+		 session.setAttribute("userlist", userlist); 
+		 
+		 
+		
+		return "inserintofrom";
+
+	}
+	
+	
+}

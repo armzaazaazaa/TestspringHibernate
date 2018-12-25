@@ -1,0 +1,15 @@
+function view(id){
+    alert(id);
+
+			$.ajax({
+                type: "POST",
+            //    contentType: "application/json",
+                url: "/hosting/view",
+                data: id,
+               // dataType: 'json',
+               // timeout: 600000,
+                success: function (data) {
+                
+                }
+       });
+}

@@ -1,0 +1,37 @@
+package Project.View;
+
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+import Connection.HibernateConnection;
+import Model.Users;
+
+public class ViewManager {
+	
+	@SuppressWarnings("unchecked")
+	 public  Users  getview (Users user) {
+		  List<Users> list = null;
+		  Users usr = null;
+
+	  try {
+	   SessionFactory sessionFactory = HibernateConnection.doHibernateConnection();
+	   Session session = sessionFactory.openSession();
+	   session.beginTransaction();
+	   list = session.createQuery("From Users Where id = '"+user.getId()+"' ").list();
+	   session.clear();
+	   session.flush();
+	   session.close();
+	   sessionFactory.close();
+	   
+	 
+	
+	  } catch (Exception e) {
+	   e.printStackTrace();
+
+	  }
+	  return  usr ;
+	 }
+
+}

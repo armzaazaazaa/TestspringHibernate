@@ -1,0 +1,83 @@
+package Project.View;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.stereotype.*;
+import org.springframework.web.bind.annotation.*;
+
+import Model.Users;
+import Project.Showuser.ShowuserManager;
+import Project.login.loginManager;
+
+@Controller
+@RequestMapping("ajax")
+
+public class ViewController {
+	
+	@RequestMapping(value = "/viewdatauser", method = RequestMethod.POST)
+	public String viewdatauser(HttpServletRequest request, HttpSession session) throws Exception {
+		
+		request.setCharacterEncoding("UTF-8");
+
+		  String numid = request.getParameter("numid");
+		 
+		  
+
+		  
+		  
+		  Users users = new Users();
+		  users.setId(numid);
+		
+		  
+		
+	
+		  
+		  
+		  loginManager loginManager = new loginManager();
+//		  loginManager.getlogin(users);
+		  
+		  
+		  Users userlogins = new Users();
+		  userlogins = loginManager.getlogin(users);
+		  
+		  
+		  
+		  ShowuserManager show = new ShowuserManager();
+		  
+		 List userlist = show.getshopfromapi();
+		  
+		 session.setAttribute("userlist", userlist); 
+		 
+		
+		 
+		 
+		 
+		  
+		  if( userlogins == null ) {
+			  
+			  session.setAttribute("notlogin", "1"); 
+			  return "index";
+		  } else {
+			  
+			  session.setAttribute("userlogins", userlogins); 
+			  
+			  return "inserintofrom";
+		  }
+		  
+		  
+		  
+	//	  System.out.print(username + password );
+		  
+
+	 
+		 
+		 
+		
+		
+
+	}
+
+}

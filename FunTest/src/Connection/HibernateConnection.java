@@ -1,0 +1,38 @@
+package Connection;
+
+import java.util.Properties;
+
+
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+
+import Model.*;
+
+
+
+public class HibernateConnection {
+	public static SessionFactory sessionFactory;
+	
+	public static SessionFactory doHibernateConnection(){
+	 Properties database = new Properties();
+	 database.setProperty("hibernate.connection.driver_class","com.mysql.jdbc.Driver");
+	 database.setProperty("hibernate.connection.username","root");
+	 database.setProperty("hibernate.connection.password", "");
+	 database.setProperty("hibernate.connection.url","jdbc:mysql://localhost:3305/Testuser?characterEncoding=UTF-8"); //confingDB
+	/* database.setProperty("hibernate.connection.username","root");
+	 database.setProperty("hibernate.connection.password", "123456");
+	 database.setProperty("hibernate.connection.url","jdbc:mysql://10.0.0.23:3306/assessment?characterEncoding=UTF-8");*/
+	 database.setProperty("hibernate.dialect","org.hibernate.dialect.MySQL5Dialect");
+	 Configuration cfg = new Configuration().setProperties(database).addPackage("Model")
+	 							 .addAnnotatedClass(Users.class)
+	 							 .addAnnotatedClass(Datausers.class)//modaluser
+	 					
+	 						;
+	 							
+	 StandardServiceRegistryBuilder ssrb = new StandardServiceRegistryBuilder().applySettings(cfg.getProperties());
+	 sessionFactory = cfg.buildSessionFactory(ssrb.build());
+	 return sessionFactory;
+	}
+	
+}

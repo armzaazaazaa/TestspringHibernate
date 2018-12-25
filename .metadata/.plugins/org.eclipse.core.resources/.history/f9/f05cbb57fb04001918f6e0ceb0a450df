@@ -1,0 +1,57 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<%@ page import="java.util.*"%>
+<%@ page import="Model.*"%>
+<%@ page import="java.text.*"%>
+<%
+
+
+
+Users ViewManager = (Users) session.getAttribute("ViewManager");
+
+%>
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<!-- global -->
+<link rel="stylesheet" type="text/css" href="css/global/bootstrap.min.css">
+<script type="text/javascript" src="js/global/jquery-3.3.1.slim.min.js"></script>
+
+<script type="text/javascript" src="js/global/jquery-3.3.1.slim.min.js"></script>
+
+
+
+<script type="text/javascript" src="js/global/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/global/popper.min.js"></script>
+<!-- global -->
+
+<link rel="stylesheet" type="text/css" href="css/from.css">
+<script type="text/javascript" src="js/fromjs.js"></script>
+<script type="text/javascript" src="js/view.js"></script>
+
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body align='center'>
+
+
+
+
+	
+	<div class="container">
+	
+
+	
+	
+	
+	
+	
+	</div>
+	</body>
+	</html>
+
+	
+	

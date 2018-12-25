@@ -1,0 +1,25 @@
+
+function seave(){
+
+	//var x = document.getElementById("email")
+//	
+	 var objForm = {};
+     objForm.email = document.getElementById("email").value();
+    // objForm.password = $('#password').val();
+     
+    
+     
+     console.log(objForm);
+     
+}
+
+function myFunction() {
+
+	
+	alter('55555');
+	//console.log(id);
+
+//    $('#exampleModal').modal('show')
+
+}
+

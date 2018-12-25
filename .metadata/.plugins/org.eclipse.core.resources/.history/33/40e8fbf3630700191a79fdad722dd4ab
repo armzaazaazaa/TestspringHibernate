@@ -1,0 +1,108 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8"%>
+<%@ page import="java.util.*"%>
+<%@ page
+import="Model.*"%>
+<%@ page import="java.text.*"%>
+<% Users userlogins = (Users)
+session.getAttribute("userlogins"); Users userview =
+(Users)session.getAttribute("userview"); %>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- global -->
+	<link rel="stylesheet" type="text/css" href="css/global/bootstrap.min.css" />
+	<script type="text/javascript" src="js/global/jquery-3.3.1.slim.min.js"></script>
+
+	<script type="text/javascript" src="js/global/jquery-3.3.1.slim.min.js"></script>
+
+	<script type="text/javascript" src="js/global/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/global/popper.min.js"></script>
+	<!-- global -->
+
+	<link rel="stylesheet" type="text/css" href="css/from.css" />
+	<script type="text/javascript" src="js/fromjs.js"></script>
+	<script type="text/javascript" src="js/view.js"></script>
+
+
+
+	<meta charset="UTF-8" />
+	<title>Insert title here</title>
+</head>
+
+<body align="center">
+	<div class="container">
+		<nav class="navbar navbar-light bg-light">
+			<a class="navbar-brand" href="#">
+				<%=userlogins.getEmail()%></a>
+
+			<form id="logout" action="logout" method="post">
+				<button type="submit" class="btn btn-danger">logout</button>
+			</form>
+		</nav>
+
+		<br />
+		<br />
+		<br />
+
+
+
+		<%=userview.getEmail() %> <br />
+		<%=userview.getPasswort() %><br />
+		<%=userview.getId() %>
+
+		<br><br><br>
+
+		<hr>
+
+		<form id="form1" action="uploaddatauser"  method="post" enctype='multipart/form-data' accept-charset="UTF-8" >
+
+			<div class="form-group">
+				<label for="exampleInputPassword1">assdress</label>
+				<input type="text" class="form-control" id="assdress" name="address">
+				<input type="hidden" id="iduser" name="iduser" value="<%=userview.getId()%>">
+			</div>
+
+			<div class="form-group">
+				<label for="exampleInputEmail1">image</label>
+				<input class="btn-primary" type='file' id="imgInp" name="image" multiple/>
+				<img id="blah" src="#" alt="your image" />
+			</div>
+
+
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+
+
+	</div>
+</body>
+
+</html>
+
+<script type="text/javascript">
+
+	function readURL(input) {
+
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+
+			reader.onload = function (e) {
+				$('#blah').attr('src', e.target.result);
+			}
+
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+
+	$("#imgInp").change(function () {
+		readURL(this);
+	});
+
+
+</script>
+<!--
+
+//-->
+</script>

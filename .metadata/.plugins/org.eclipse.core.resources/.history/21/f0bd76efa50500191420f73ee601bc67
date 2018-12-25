@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<mvc:annotation-driven></mvc:annotation-driven>
+	<context:component-scan base-package="Project.*"></context:component-scan>
+	
+ 	<!-- <mvc:resources location="/WEB-INF/ckeditor/" mapping="/ckeditor/**"></mvc:resources>
+	<mvc:resources location="/WEB-INF/file/" mapping="/file/**"></mvc:resources> -->
+<!--	 
+	<mvc:resources location="/WEB-INF/assets/fonts/" mapping="/fonts/**"></mvc:resources>
+  <mvc:resources location="/WEB-INF/assets/sass/" mapping="/sass/**"></mvc:resources>-->
+	<mvc:resources location="/WEB-INF/js/" mapping="/js/**"></mvc:resources>  
+	<mvc:resources location="/WEB-INF/images/" mapping="/img/**"></mvc:resources>
+	<mvc:resources location="/WEB-INF/jsp/" mapping="/jsp/**"></mvc:resources>
+	<mvc:resources location="/WEB-INF/css/" mapping="/css/**"></mvc:resources>
+	
+	
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+ 	<property name="prefix" value="/WEB-INF/jsp/"/>
+ 	<property name="suffix" value=".jsp"/>
+ 	
+</bean>
+</beans>

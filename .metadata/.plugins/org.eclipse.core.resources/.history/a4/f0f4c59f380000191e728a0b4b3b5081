@@ -1,0 +1,73 @@
+package Model;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.*;
+
+@Entity
+@Table(name = "user") 
+public class Users {
+	
+	
+@Id
+	private int id;
+
+@Column(name ="email");
+	private String email;
+	private String passwort;
+	
+	
+	public Users() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	
+	public Users(int id, String email, String passwort) {
+		super();
+		this.id = id;
+		this.email = email;
+		this.passwort = passwort;
+	}
+
+
+
+	public int getId() {
+		return id;
+	}
+
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+
+	public String getPasswort() {
+		return passwort;
+	}
+
+
+
+	public void setPasswort(String passwort) {
+		this.passwort = passwort;
+	}
+	
+	
+	
+
+}
